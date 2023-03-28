@@ -1,0 +1,21 @@
+fun @main(): i32 {
+%entry:
+  @a_1 = alloc i32
+  store 2, @a_1
+  %0 = load @a_1
+  br %0, %then_0_label, %else_0_label
+%then_0_label:
+  %1 = load @a_1
+  %2 = add %1, 1
+  store %2, @a_1
+  jump %endif_0_label
+%else_0_label:
+  store 0, @a_1
+  jump %endif_0_label
+%endif_0_label:
+  %3 = load @a_1
+  ret %3
+%new_block_label_1:
+  ret 0
+}
+

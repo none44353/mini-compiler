@@ -1,0 +1,18 @@
+-打开环境
+docker run -it --rm -v C:\Users\none4\Desktop\mini-compiler\sysy-make-template:/root/compiler maxxing/compiler-dev bash
+
+-执行
+make
+build/compiler -koopa hello.c -o hello.koopa
+build/compiler -riscv hello.c -o hello.riscv
+
+autotest -koopa  /root/compiler
+
+
+autotest -riscv -s lv9 /root/compiler compiler 2>&1 | tee compiler/out.txt
+
+- 本地测试
+docker run -it --rm -v C:\Users\none4\Desktop\mini-compiler\sysy-make-template:/root/compiler maxxing/compiler-dev autotest -koopa -s lv9 /root/compiler
+docker run -it --rm -v C:\Users\none4\Desktop\mini-compiler\sysy-make-template:/root/compiler maxxing/compiler-dev autotest -riscv -s lv9 /root/compiler
+
+docker run -it --rm -v C:\Users\none4\Desktop\mini-compiler\sysy-make-template:/root/compiler maxxing/compiler-dev autotest -koopa -s lv3 /root/compiler
